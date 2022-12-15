@@ -1,29 +1,53 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+// 导入主视图
+import HomeView from "../views/HomeView.vue";
+import LoginView from "../views/LoginView.vue";
 
-Vue.use(VueRouter)
+// 导入子视图
+import Order from "@/components/Order.vue";
+import AnalyseData from "@/components/AnalyseData.vue"
+
+Vue.use(VueRouter);
+
+const originalPush = VueRouter.prototype.push
+
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: "/home",
+    name: "home",
+    component: HomeView,
+    children: [
+      {
+        path: "/",
+        redirect: "/home/order",
+      },
+      {
+        path: "order",
+        component: Order,
+      },
+      {
+        path: "analyse",
+        component:AnalyseData
+      }
+    ],
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    path: "/login",
+    component: LoginView,
+  },
+];
+
+// 路由守卫配置
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

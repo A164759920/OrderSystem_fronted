@@ -1,24 +1,7 @@
-# order_fronted
+# 点餐后台管理系统
 
-## Project setup
-```
-npm install
-```
+## 订单查询子模块
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 数据分析子模块
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 管理子模块
