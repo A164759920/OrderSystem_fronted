@@ -150,6 +150,7 @@ export default {
     }
 
     .top-sale {
+
         #saleChart {
             width: 100%;
             height: 300px;
@@ -157,6 +158,7 @@ export default {
     }
 
     .seven-count {
+
         #countChart {
             width: 100%;
             height: 250px;

@@ -19,7 +19,7 @@
     </div>
 </template>
 
-<script>
+<script> 
 import axios from "axios"
 import CusInput from "@/components/CusInput.vue"
 import * as BUS from "@/eventBus/index.js"
