@@ -56,7 +56,8 @@ export default {
                             series: [
                                 {
                                     data: ctx.sumCount_Y_Data,
-                                    type: 'line'
+                                    type: 'line',
+                                    itemStyle : { normal: {label : {show: true}}}
                                 }
                             ]
                         };
@@ -100,8 +101,9 @@ export default {
                                 {
                                     name: '销量',
                                     type: 'bar',
-                                    data: ctx.typeSale_Y_Data
-                                }
+                                    data: ctx.typeSale_Y_Data,
+                                    
+                                },
                             ]
                         };
                         saleChart.setOption(option)
