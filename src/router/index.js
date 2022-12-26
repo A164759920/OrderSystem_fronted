@@ -3,18 +3,20 @@ import VueRouter from "vue-router";
 // 导入主视图
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
+import RegisterView from "../views/RegisterView.vue";
 
 // 导入子视图
 import Order from "@/components/Order.vue";
-import AnalyseData from "@/components/AnalyseData.vue"
+import Manage from "@/components/Manage.vue";
+import AnalyseData from "@/components/AnalyseData.vue";
 
 Vue.use(VueRouter);
 
-const originalPush = VueRouter.prototype.push
+const originalPush = VueRouter.prototype.push;
 
 VueRouter.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err)
-}
+  return originalPush.call(this, location).catch((err) => err);
+};
 
 const routes = [
   {
@@ -32,13 +34,21 @@ const routes = [
       },
       {
         path: "analyse",
-        component:AnalyseData
-      }
+        component: AnalyseData,
+      },
+      {
+        path: "manage",
+        component: Manage,
+      },
     ],
   },
   {
     path: "/login",
     component: LoginView,
+  },
+  {
+    path: "/register",
+    component: RegisterView,
   },
 ];
 

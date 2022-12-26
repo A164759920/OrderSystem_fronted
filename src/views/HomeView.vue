@@ -53,6 +53,9 @@ export default {
       const el = document.getElementById("nav1")
       console.log(el)
     }
+  },
+  mounted: function(){
+    
   }
 }
 </script>
