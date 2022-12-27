@@ -45,43 +45,6 @@ export default {
         return {
             domain: BUS.DOMAIN,
             tableData: []
-            // tableData: [{
-            //     Odate: "2022/12/15",
-            //     Ono: "20221215001",
-            //     Cname: "测试用户1",
-            //     Ototal: "15.00",
-            //     dishList: [
-            //         {
-            //             Dname: "锅盖面",
-            //             Dcount: "1",
-            //             Dprice: "5.00"
-            //         },
-            //         {
-            //             Dname: "肥肠面",
-            //             Dcount: "1",
-            //             Dprice: "10.00"
-            //         }
-            //     ]
-            // }, {
-            //     Odate: "2022/12/15",
-            //     Ono: "20221215001",
-            //     Cname: "测试用户1",
-            //     Ototal: "15.00",
-            //     dishList: [
-            //         {
-            //             Dname: "锅盖面",
-            //             Dcount: "1",
-            //             Dprice: "5.00"
-            //         },
-            //         {
-            //             Dname: "肥肠面",
-            //             Dcount: "1",
-            //             Dprice: "10.00"
-            //         }
-            //     ]
-            // }
-            // ],
-
         }
     },
     mounted: function () {
@@ -107,7 +70,6 @@ export default {
     },
     methods: {
         deleteRow: async function (index, rows) {
-            // console.log("测试",this.tableData[index].Ono)
             try {
                 const res = await axios.post(`${this.domain}/OrderDelete`, {
                     Ono: this.tableData[index].Ono
