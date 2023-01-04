@@ -330,6 +330,7 @@ export default {
         font-family: Arial, Helvetica, sans-serif;
         line-height: 50px;
         text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
 
     .table {
@@ -345,12 +346,13 @@ export default {
             line-height: 50px;
             text-align: center;
             justify-content: center;
+            word-spacing: 10px;
             font-size: 17px;
             font-weight: 500;
             font-family: Arial, Helvetica, sans-serif;
             background-color: #BDBDBD;
             color: black;
-
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             .dish-add {
                 position: absolute;
                 top: 7.5px;
@@ -365,6 +367,7 @@ export default {
 
             .dish-add:hover {
                 cursor: pointer;
+                box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
             }
         }
     }
@@ -504,8 +507,9 @@ export default {
                 font-size: 18px;
                 font-weight: 550;
                 border-radius: 10px;
-                background-color: #03A9F4;
+                background-color: hsl(199, 98%, 48%);
                 color: white;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             }
         }
     }

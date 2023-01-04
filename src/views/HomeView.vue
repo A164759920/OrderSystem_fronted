@@ -1,34 +1,31 @@
 <template>
-  <div class="container">
+  <div class="container" >
     <div class="header">
       点 餐 管 理 系 统
     </div>
     <div class="body">
-      <div class="body-left">
-        <div class="nav-item" :class="{ 'active': activeNav === '1' ? true : false }" @click="toChildPage('order', $event)" id="1">
+      <div class="body-left" v-sticky="{ top: 0, isVertical: false }">
+        <div class="nav-item" :class="{ 'active': activeNav === '1' ? true : false }"
+          @click="toChildPage('order', $event)" id="1">
           <i class="el-icon-s-order"></i>
           <span class="nav-item-text">订 单</span>
         </div>
-        <div class="nav-item"
-        :class="{'active':activeNav==='2'?true:false}"
-        @click="toChildPage('analyse', $event)" id="2">
+        <div class="nav-item" :class="{ 'active': activeNav === '2' ? true : false }"
+          @click="toChildPage('analyse', $event)" id="2">
           <i class="el-icon-s-data"></i>
           <span class="nav-item-text">统 计</span>
         </div>
-        <div class="nav-item" 
-        :class="{'active':activeNav==='3'?true:false}"
-        @click="toChildPage('manage', $event)" id="3">
+        <div class="nav-item" :class="{ 'active': activeNav === '3' ? true : false }"
+          @click="toChildPage('manage', $event)" id="3">
           <i class="el-icon-s-tools"></i>
           <span class="nav-item-text">管 理</span>
         </div>
       </div>
-      <div class="body-right">
+      <div class="body-right" ref="homePage">
         <router-view>
         </router-view>
       </div>
-
     </div>
-    <div class="footer"></div>
   </div>
 </template>
 
@@ -41,7 +38,7 @@ export default {
   name: 'HomeView',
   data: function () {
     return {
-      activeNav: "1"
+      activeNav: "1",
     }
   },
   methods: {
@@ -51,11 +48,10 @@ export default {
     },
     showActiveNav(id) {
       const el = document.getElementById("nav1")
-      console.log(el)
+      // console.log(el)
     }
   },
-  mounted: function(){
-    
+  mounted: function () {
   }
 }
 </script>
@@ -87,6 +83,9 @@ export default {
       height: 100%;
       background-color: whitesmoke;
 
+      // position: fixed;
+      // left: 0;
+      // top:50px;
       .nav-item {
         width: 100%;
         height: 70px;
@@ -108,6 +107,7 @@ export default {
 
       .active {
         background-color: #BDBDBD;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
       }
 
       .nav-item:hover {
@@ -120,7 +120,11 @@ export default {
     .body-right {
       width: calc(100% - 200px);
       height: 100%;
+      position: absolute;
+      left: 200px;
+
     }
   }
+
 }
 </style>
