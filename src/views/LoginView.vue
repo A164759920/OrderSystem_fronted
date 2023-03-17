@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import axios from "axios"
+import AxiosRequest from "../utils/http/index"
 import CusInput from "@/components/CusInput.vue"
 import * as BUS from "@/eventBus/index.js"
 export default {
@@ -36,7 +36,6 @@ export default {
     },
     methods: {
         login: async function () {
-            console.log(this.username, this.password)
             if (this.username === "" || this.password === "") {
                 this.$notify.error({
                     title: "登录失败",
@@ -44,14 +43,13 @@ export default {
                 })
             } else {
                 try {
-                    const res = await axios.post(`${this.domain}/login`,
-                        {
-                            "Cname": this.username,
-                            "Cpwd": this.password
-                        })
+                    const res = await AxiosRequest.post(`${this.domain}/login`, {
+                        "Cname": this.username,
+                        "Cpwd": this.password
+                    })
                     if (res) {
                         if (res.data.code === 0) {
-                            console.log(res.data.msg)
+                            localStorage.setItem("token", res.data.token)
                             this.$router.push("/home")
                         }
                         else {
@@ -87,6 +85,17 @@ export default {
     justify-content: center;
     align-items: center;
     position: relative;
+
+    .button {
+        width: 100px;
+        height: 30px;
+        background-color: #1976D2;
+        margin-bottom: 2px;
+    }
+
+    .button:hover {
+        cursor: pointer;
+    }
 
     .header {
         width: 100%;

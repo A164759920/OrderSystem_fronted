@@ -44,15 +44,19 @@ const routes = [
   },
   {
     path: "/login",
+    name:"login",
     component: LoginView,
   },
   {
     path: "/register",
+    name:"register",
     component: RegisterView,
   },
 ];
 
 // 路由守卫配置
+
+
 
 const router = new VueRouter({
   mode: "history",

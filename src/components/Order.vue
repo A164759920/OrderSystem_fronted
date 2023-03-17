@@ -37,7 +37,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+import AxiosRequest from "../utils/http/index"
+// import axios from 'axios';
 import * as BUS from "../eventBus/index.js"
 export default {
     name: "Order",
@@ -50,7 +51,7 @@ export default {
     mounted: function () {
         (async function (ctx) {
             try {
-                const dishData = await axios.get(`${ctx.domain}/orderall`)
+                const dishData = await AxiosRequest.get(`${ctx.domain}/orderall`)
                 if (dishData.data.code === 0) {
                     console.log(dishData.data)
                     ctx.tableData = dishData.data.data
@@ -71,7 +72,7 @@ export default {
     methods: {
         deleteRow: async function (index, rows) {
             try {
-                const res = await axios.post(`${this.domain}/OrderDelete`, {
+                const res = await AxiosRequest.post(`${this.domain}/OrderDelete`, {
                     Ono: this.tableData[index].Ono
                 })
                 if (res.data.code === 0) {

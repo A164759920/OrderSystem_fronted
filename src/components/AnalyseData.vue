@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import AxiosRequest from "../utils/http/index"
 import * as echarts from 'echarts';
 import * as BUS from "@/eventBus/index.js"
 export default {
@@ -35,7 +35,7 @@ export default {
         initSaleChart: function () {
             (async function (ctx) {
                 try {
-                    const chartData = await axios.get(`${ctx.domain}/DishTypeSales`)
+                    const chartData = await AxiosRequest.get(`${ctx.domain}/DishTypeSales`)
                     if (chartData.data.code === 0) {
                         // 设置X和Y轴的数据
                         chartData.data.data.forEach(item => {
@@ -81,7 +81,7 @@ export default {
         initTypeSaleChart: function () {
             (async function (ctx) {
                 try {
-                    const chartData = await axios.get(`${ctx.domain}/DishTopType`)
+                    const chartData = await AxiosRequest.get(`${ctx.domain}/DishTopType`)
                     if (chartData.data.code === 0) {
                         var typeSaleChart = echarts.init(document.getElementById("typeSaleChart"))
                         var option = {
@@ -136,7 +136,7 @@ export default {
         initCountChart: function () {
             (async function (ctx) {
                 try {
-                    const chartData = await axios.get(`${ctx.domain}/ordersumcount`)
+                    const chartData = await AxiosRequest.get(`${ctx.domain}/ordersumcount`)
                     if (chartData.data.code === 0) {
                         chartData.data.data.forEach(item => {
                             ctx.sumCount_X_Data.push(item.Odate)

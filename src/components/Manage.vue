@@ -86,7 +86,8 @@
 
 <script>
 import * as BUS from "@/eventBus/index.js"
-import axios from "axios";
+import AxiosRequest from "../utils/http/index"
+// import axios from "axios";
 export default {
     data: function () {
         return {
@@ -156,7 +157,7 @@ export default {
         saveEditorChange: async function () {
             const that = this
             try {
-                const res = await axios.post(`${this.domain}/DishEditor`, {
+                const res = await AxiosRequest.post(`${this.domain}/DishEditor`, {
                     Dname: that.dialogData.Dname,
                     fieldKey: that.dialogData.fieldKey,
                     newData: that.dialogInputData
@@ -203,7 +204,7 @@ export default {
          */
         saveDeleteChange: async function () {
             try {
-                const res = await axios.post(`${this.domain}/DishDelete`, {
+                const res = await AxiosRequest.post(`${this.domain}/DishDelete`, {
                     Dname: this.deleteDialogData.Dname
                 })
                 if (res.data.code === 0) {
@@ -258,7 +259,7 @@ export default {
             }
             console.log("添加的数据", dishObj)
             try {
-                const res = await axios.post(`${this.domain}/DishAdd`, {dishObj})
+                const res = await AxiosRequest.post(`${this.domain}/DishAdd`, {dishObj})
                 if (res.data.code === 0) {
                     this.$notify.success({
                         title: "添加成功"
@@ -291,7 +292,7 @@ export default {
     mounted: function () {
         const that = this
         // 获取菜品分类
-        axios.get(`${this.domain}/DishTypeAll`).then(value => {
+        AxiosRequest.get(`${this.domain}/DishTypeAll`).then(value => {
             if (value.data.code === 0) {
                 that.typeList = value.data.data
             } else {
@@ -301,7 +302,7 @@ export default {
             console.log("渲染错误", error)
         })
         // 获取菜品详细信息
-        axios.get(`${this.domain}/DishAll`).then(value => {
+        AxiosRequest.get(`${this.domain}/DishAll`).then(value => {
             if (value.data.code === 0) {
                 that.dishList = value.data.data
             } else {
